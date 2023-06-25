@@ -1,37 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Website</title>
+  <title>Test WL Applications</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: #ECF87F;
+      color: #FC2E20;
+      font-family: sans-serif;
+    }
+    
+    header, main, footer {
+      text-align: center;
+    }
+    
+    nav {
+      margin-top: 20px;
+    }
+    
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    nav ul li {
+      margin-right: 10px;
+    }
+    
+    main ul {
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to My Website</h1>
+    <h1>Applications</h1>
   </header>
   
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="OGInscription.html">OG Inscription</a></li>
-      <li><a href="OGApplication.html">OG Application</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="a.json">a.json</a></li>
+      <li><a href="wl.json">wl.json</a></li>
     </ul>
   </nav>
   
   <main>
-    <section>
-      <h2>About Me</h2>
-      <p>This is a paragraph about me and my website.</p>
-    </section>
+    <h2>JSON Files</h2>
+    <p>Click on the links below to access the JSON files:</p>
     
-    <section>
-      <h2>Contact</h2>
-      <p>You can reach me at email@example.com.</p>
-    </section>
+    <ul>
+      <li><a href="a.json">a.json</a></li>
+      <li><a href="wl.json">wl.json</a></li>
+    </ul>
   </main>
   
   <footer>
-    <p>&copy; 2023 My Website. All rights reserved.</p>
+    <p>&copy; 2023 WL APP. All rights reserved.</p>
   </footer>
 </body>
 </html>
