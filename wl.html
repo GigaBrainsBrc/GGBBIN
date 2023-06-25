@@ -187,20 +187,20 @@
   <div id="main">
     <h1 id="title-text"></h1>
     <div>
-      <button id="whitelist-checker-tab" onclick="openTab('whitelist-checker', this)" class="tab-button active-tab">Am I In The Pond?</button>
-      <button id="whitelist-apply-tab" onclick="openTab('whitelist-apply', this)" class="tab-button">Let Me Into The Pond</button>
+      <button id="whitelist-checker-tab" onclick="openTab('whitelist-checker', this)" class="tab-button active-tab">Check The Pond?</button>
+      <button id="whitelist-apply-tab" onclick="openTab('whitelist-apply', this)" class="tab-button">Pond Enrollment</button>
     </div>
 
     <div id="whitelist-checker" style="display: block;" class="tab-view">
-      <p>If you haven't applied yet, click on the Whitelist Application...</p>
+      <p>If You haven't Gotten into the Pond, click on the Pond Enrollment Button Above...</p>
       <div class="input-button">
-        <input type="text" id="wallet" placeholder="Enter your ordinal wallet here 'bc1p...'" class="input">
+        <input type="text" id="wallet" placeholder="Provide the Ribbit Council with your Ordinal Wallet 'bc1p...'" class="input">
         <button onclick="check()" class="check-button">Check</button>
       </div>
       <div style="flex-direction: row; display: flex;align-items: baseline;justify-content: center;font-size: 14px;">
         <div class="col-share-twitter">
           <p id="result" class="wl-result"></p>
-          <a id="wl-success-share" style="display: none; padding-left: 5px;color: black;">Share on Twitter 🐦</a>
+          <a id="wl-success-share" style="display: none; padding-left: 5px;color: black;">Share with other Frogs on Twitter 🐦</a>
         </div>
       </div>
 
@@ -208,18 +208,18 @@
 
     <div id="whitelist-apply" style="display: none;" class="tab-view">
       <div id="step-1">
-        <p>Spots are filling up fast! Follow the steps and complete your application to not miss your chance!</p>
+        <p>The Pond is filling up fast! If you want in Follow the steps to be Enrolled!</p>
         <div class="input-button">
-          <input type="text" id="apply-wallet" placeholder="Enter your ordinal wallet here 'bc1p..." class="input">
+          <input type="text" id="apply-wallet" placeholder="Enter Your ordinal wallet 'bc1p..." class="input">
           <button onclick="nextStep(2)" class="check-button">Continue</button>
         </div>
         <p id="wallet-error" class="error-text"></p>
       </div>
 
       <div id="step-2" style="display: none;">
-        <p>To continue with the completion of your application, we kindly request that you input your Twitter handle.</p>
+        <p>To get into the Pond, Please input your Twitter handle.</p>
         <div class="input-button">
-          <input type="text" id="apply-twitter" placeholder="Enter your twitter handle here with '@'" class="input">
+          <input type="text" id="apply-twitter" placeholder="Enter your twitter handle '@'" class="input">
           <button onclick="nextStep(3)" class="check-button">Continue</button>
         </div>
         <p id="twitter-error" class="error-text"></p>
@@ -234,7 +234,7 @@
       </div>
 
       <div id="step-4" style="display: none;">
-        <p>Your application has been submitted - we'll follow to you if you're whitelisted...</p>
+        <p>Your Application has been submitted - we'll RIBBIT on your Tweet if you're Admitted...</p>
         <p><strong>Follow <a href="https://twitter.com/OrangeDropsBrc" target="_blank" style="text-decoration: none;"><strong style="color:#c94108;font-weight:bold;">@OrangeDropsBrc</strong></a> and turn on notifications!</strong></p>
       </div>
     </div>
@@ -274,7 +274,7 @@
           resultElement.classList.add('wl-success');
 
           const btcm_url = await getBtcmUrl();
-          const tweetText = "https://twitter.com/intent/tweet?text=I'm whitelisted for the upcoming mint from @OrangeDropsBrc!%0A%0AYou can apply here: " + btcm_url;
+          const tweetText = "https://twitter.com/intent/tweet?text=I'vebeen admitted into the @Ribbitters Pond!%0A%0AYou can Enroll here: " + btcm_url;
 
           shareLinkElement.style.display = 'inline';
           shareLinkElement.onclick = function() {
@@ -282,11 +282,11 @@
           };
 
         } else {
-          resultElement.innerText = 'You are not whitelisted!';
+          resultElement.innerText = 'You've not Been Admitted into the Pond!';
           resultElement.classList.remove('wl-success');
           resultElement.classList.add('wl-error');
           shareLinkElement.style.display = 'none';
-          removeTweetText(); // Here we are calling a new function to remove the textarea if it exists.
+          removeTweetText();
         }
       }
 
@@ -310,7 +310,6 @@
           this.select();
         };
 
-        // Add code here to make input-button and its preceding p tag invisible
         document.querySelector("#whitelist-checker .input-button").style.display = "none";
         document.querySelector("#whitelist-checker p").style.display = "none";
 
@@ -369,7 +368,7 @@
           await getURL();
           const wallet = document.getElementById('apply-wallet').value;
           const twitter = document.getElementById('apply-twitter').value;
-          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying for the @OrangeDropsBrc Whitelist!%0A%0A My Ordinal Address: ${wallet}%0A%0AYou can apply here: ${btcm_url}`;
+          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying to get into the @Ribbitters Pond!%0A%0A My Ordinal Address: ${wallet}%0A%0A#Ribbitters%0A%0AYou can apply here: ${btcm_url}`;
           document.getElementById('tweet-url').value = tweetUrl;
         }
       }
