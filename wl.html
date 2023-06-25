@@ -274,7 +274,7 @@
           resultElement.classList.add('wl-success');
 
           const btcm_url = await getBtcmUrl();
-          const tweetText = "https://twitter.com/intent/tweet?text=I'm whitelisted for the upcoming mint from @Ribbitters!%0A%0AYou can apply here: " + btcm_url;
+          const tweetText = "https://twitter.com/intent/tweet?text=I'm Admitted into the @Ribbitters Pond!%0A%0AYou can apply here: " + btcm_url;
 
           shareLinkElement.style.display = 'inline';
           shareLinkElement.onclick = function() {
@@ -369,7 +369,7 @@
           await getURL();
           const wallet = document.getElementById('apply-wallet').value;
           const twitter = document.getElementById('apply-twitter').value;
-          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying for the @Ribbitters Pond!%0A%0A #Ribbitters %0A%0A My Ordinal Address: ${wallet}%0A%0AYou can enroll here: ${btcm_url}`;
+          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying for the @Ribbitters Pond!%0A%0A#Ribbitters%0A%0AMy Ordinal Address: ${wallet}%0A%0AYou can enroll here: ${btcm_url}`;
           document.getElementById('tweet-url').value = tweetUrl;
         }
       }
