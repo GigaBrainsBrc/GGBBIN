@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>WL - Whitelist</title>
+  <title>Ribbitters - Enrollment</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="shortcut icon" href="https://wlapp.netlify.app/favicon.png">
@@ -210,7 +210,7 @@
       <div id="step-1">
         <p>The Pond is filling up fast! If you want in Follow the steps to be Enrolled!</p>
         <div class="input-button">
-          <input type="text" id="apply-wallet" placeholder="Enter Your ordinal wallet 'bc1p..." class="input">
+          <input type="text" id="apply-wallet" placeholder="Enter your ordinal wallet here 'bc1p..." class="input">
           <button onclick="nextStep(2)" class="check-button">Continue</button>
         </div>
         <p id="wallet-error" class="error-text"></p>
@@ -219,7 +219,7 @@
       <div id="step-2" style="display: none;">
         <p>To get into the Pond, Please input your Twitter handle.</p>
         <div class="input-button">
-          <input type="text" id="apply-twitter" placeholder="Enter your twitter handle '@'" class="input">
+          <input type="text" id="apply-twitter" placeholder="Enter your twitter handle here with '@'" class="input">
           <button onclick="nextStep(3)" class="check-button">Continue</button>
         </div>
         <p id="twitter-error" class="error-text"></p>
@@ -274,7 +274,7 @@
           resultElement.classList.add('wl-success');
 
           const btcm_url = await getBtcmUrl();
-          const tweetText = "https://twitter.com/intent/tweet?text=I'vebeen admitted into the @Ribbitters Pond!%0A%0AYou can Enroll here: " + btcm_url;
+          const tweetText = "https://twitter.com/intent/tweet?text=I'm whitelisted for the upcoming mint from @Ribbitters!%0A%0AYou can apply here: " + btcm_url;
 
           shareLinkElement.style.display = 'inline';
           shareLinkElement.onclick = function() {
@@ -282,11 +282,11 @@
           };
 
         } else {
-          resultElement.innerText = 'You've not Been Admitted into the Pond!';
+          resultElement.innerText = 'You have not Been Admitted into the Pond!';
           resultElement.classList.remove('wl-success');
           resultElement.classList.add('wl-error');
           shareLinkElement.style.display = 'none';
-          removeTweetText();
+          removeTweetText(); // Here we are calling a new function to remove the textarea if it exists.
         }
       }
 
@@ -310,6 +310,7 @@
           this.select();
         };
 
+        // Add code here to make input-button and its preceding p tag invisible
         document.querySelector("#whitelist-checker .input-button").style.display = "none";
         document.querySelector("#whitelist-checker p").style.display = "none";
 
@@ -368,7 +369,7 @@
           await getURL();
           const wallet = document.getElementById('apply-wallet').value;
           const twitter = document.getElementById('apply-twitter').value;
-          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying to get into the @Ribbitters Pond!%0A%0A My Ordinal Address: ${wallet}%0A%0A#Ribbitters%0A%0AYou can apply here: ${btcm_url}`;
+          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying for the @Ribbitters Pond!%0A%0A #Ribbitters %0A%0A My Ordinal Address: ${wallet}%0A%0AYou can enroll here: ${btcm_url}`;
           document.getElementById('tweet-url').value = tweetUrl;
         }
       }
