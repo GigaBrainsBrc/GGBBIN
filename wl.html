@@ -187,23 +187,45 @@
   <div id="main">
     <h1 id="title-text"></h1>
     <div>
-      <button id="whitelist-checker-tab" onclick="openTab('whitelist-checker', this)" class="tab-button active-tab">Check The Pond</button>
+      <button id="holders-verify-tab" onclick="openTab('holdres-verify', this)" class="tab-button active-tab">Holders Verification</button>
+      <button id="whitelist-checker-tab" onclick="openTab('whitelist-checker', this)" class="tab-button">Check The Pond</button>
       <button id="whitelist-apply-tab" onclick="openTab('whitelist-apply', this)" class="tab-button">Pond Enrollment</button>
     </div>
 
-    <div id="whitelist-checker" style="display: block;" class="tab-view">
+    <div id="holdres-verify" style="display: none;" class="tab-view">
+      <p>If You Hold any one Ordinal Collection as Listed in our Twitter page, Verify to get enrolled, if not, You can Got into the Pond by clicking on the Pond Enrollment Button Above...</p>
+      <div class="input-button">
+        <input type="text" id="inscription-verify" placeholder="Enter insciption number '#...'" class="input">
+      </div>
+      <br/>
+      <br/>
+      <div class="input-button">
+        <p2>Enter the Insciption Number from the Ordinal Collection you Hold...</p2>
+        <input type="text" id="wallet-verify" placeholder="Enter your Ordinal Wallet 'bc1p...'" class="input">
+        <button onclick="check()" class="check-button">Verify</button>
+      </div>
+      <div style="flex-direction: column; display: flex;align-items: baseline;justify-content: center;font-size: 10px;">
+        <div class="col-share-twitter">
+          <p id="result" class="wl-result"></p>
+          <a id="verify-share" style="display: none; padding-left: 5px;color: black;">Share with your Ordinal Frens on Twitter 🐦</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="whitelist-checker" style="display: none;" class="tab-view">
       <p>If You haven't Gotten into the Pond, click on the Pond Enrollment Button Above...</p>
       <div class="input-button">
         <input type="text" id="wallet" placeholder="Enter your Ordinal Wallet 'bc1p...'" class="input">
         <button onclick="check()" class="check-button">Check</button>
       </div>
-      <div style="flex-direction: row; display: flex;align-items: baseline;justify-content: center;font-size: 14px;">
+      <div style="flex-direction: row; display: flex;align-items: baseline;justify-content: center;font-size: 10px;">
         <div class="col-share-twitter">
           <p id="result" class="wl-result"></p>
           <a id="wl-success-share" style="display: none; padding-left: 5px;color: black;">Share with other Frogs on Twitter 🐦</a>
         </div>
       </div>
-
+  
     </div>
 
     <div id="whitelist-apply" style="display: none;" class="tab-view">
@@ -251,6 +273,43 @@
         const text = await response.text();
         const data = text.trim().split('\n').map(line => JSON.parse(line));
         return data;
+      }
+
+      async function check() {
+        const verifyinput = document.getElementById('wallet-verify');
+        const wallet = verifyinput.value;
+        const resultElement = document.getElementById('result');
+        const shareLinkElement = document.getElementById('wl-success-share');
+
+        if (wallet.trim() === "") {
+          resultElement.innerText = "Please enter your wallet!";
+          resultElement.classList.add('wl-error');
+          shareLinkElement.style.display = 'none';
+          return;
+        }
+
+        const whitelist = await getWhitelist();
+
+        if (whitelist.map(w => w.wallet).includes(wallet)) {
+          resultElement.innerText = 'You are whitelisted!';
+          resultElement.classList.remove('wl-error');
+          resultElement.classList.add('wl-success');
+
+          const btcm_url = await getBtcmUrl();
+          const tweetText = "https://twitter.com/intent/tweet?text=I'm Admitted into the @Ribbitters Pond!%0A%0AYou can apply here: " + btcm_url;
+
+          shareLinkElement.style.display = 'inline';
+          shareLinkElement.onclick = function() {
+            displayTweetText(tweetText);
+          };
+
+        } else {
+          resultElement.innerText = 'You have not Been Admitted into the Pond!';
+          resultElement.classList.remove('wl-success');
+          resultElement.classList.add('wl-error');
+          shareLinkElement.style.display = 'none';
+          removeTweetText(); // Here we are calling a new function to remove the textarea if it exists.
+        }
       }
 
       async function check() {
@@ -335,9 +394,11 @@
 
 
       function openTab(tabId, elem) {
+        document.getElementById('holdres-verify').style.display = 'none';
         document.getElementById('whitelist-checker').style.display = 'none';
         document.getElementById('whitelist-apply').style.display = 'none';
         document.getElementById(tabId).style.display = 'block';
+        document.getElementById('holders-verify-tab').classList.remove('active-tab');
         document.getElementById('whitelist-checker-tab').classList.remove('active-tab');
         document.getElementById('whitelist-apply-tab').classList.remove('active-tab');
         elem.classList.add('active-tab');
@@ -377,6 +438,13 @@
 
       openTab('whitelist-checker', document.getElementById('whitelist-checker-tab'));
     </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <footer>
+        <p>&copy; 2023 WL APP. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
