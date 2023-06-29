@@ -235,7 +235,7 @@
       </div>
 
       <div id="step-4" style="display: none;">
-        <p>Your Application has been submitted - The Council will RIBBIT on your Tweet once you're Admitted to mint $RBTR Token...</p>
+        <p>Your Application has been submitted - The Council will RIBBIT on your Tweet once you're Admitted to mint the $RBTR Token...</p>
         <p><strong>Follow <a href="https://twitter.com/Ribbitters" target="_blank" style="text-decoration: none;"><strong style="color:#c94108;font-weight:bold;">@Ribbitters</strong></a> and turn on notifications!</strong></p>
       </div>
     </div>
@@ -275,7 +275,7 @@
           resultElement.classList.add('wl-success');
 
           const btcm_url = await getBtcmUrl();
-          const tweetText = "https://twitter.com/intent/tweet?text=I'm Admitted into the @Ribbitters Pond to mint %24RBTR Token!%0A%0AYou can apply here: " + btcm_url;
+          const tweetText = "https://twitter.com/intent/tweet?text=I'm Admitted into the @Ribbitters Pond to mint the %24RBTR Token!%0A%0AYou can apply here: " + btcm_url;
 
           shareLinkElement.style.display = 'inline';
           shareLinkElement.onclick = function() {
@@ -370,7 +370,7 @@
           await getURL();
           const wallet = document.getElementById('apply-wallet').value;
           const twitter = document.getElementById('apply-twitter').value;
-          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying to enter the @Ribbitters Pond to mint $RBTR Token!%0A%0A My Ordinal Address is ${wallet}%0A%0A You can enroll as a %23Ribbitter too 👇 ${btcm_url}`;
+          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying to enter the @Ribbitters Pond to mint the $RBTR Token!%0A%0A My Ordinal Address is ${wallet}%0A%0A You can enroll as a %23Ribbitter too 👇 ${btcm_url}`;
           document.getElementById('tweet-url').value = tweetUrl;
         }
       }
