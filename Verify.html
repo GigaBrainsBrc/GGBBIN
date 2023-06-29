@@ -235,7 +235,7 @@
       </div>
 
       <div id="step-4" style="display: none;">
-        <p>Your Application has been submitted - The Council will RIBBIT on your Tweet once you're Admitted...</p>
+        <p>Your Application has been submitted - The Council will RIBBIT on your Tweet once you're Admitted to mint the $RBTR Token...</p>
         <p><strong>Follow <a href="https://twitter.com/Ribbitters" target="_blank" style="text-decoration: none;"><strong style="color:#c94108;font-weight:bold;">@Ribbitters</strong></a> and turn on notifications!</strong></p>
       </div>
     </div>
@@ -270,12 +270,12 @@
         const whitelist = await getWhitelist();
 
         if (whitelist.map(w => w.wallet).includes(wallet)) {
-          resultElement.innerText = 'You are whitelisted!';
+          resultElement.innerText = 'You are whitelisted to mint the $RBTR Token!';
           resultElement.classList.remove('wl-error');
           resultElement.classList.add('wl-success');
 
           const btcm_url = await getBtcmUrl();
-          const tweetText = "https://twitter.com/intent/tweet?text=I'm Admitted into the @Ribbitters Pond!%0A%0AYou can apply here: " + btcm_url;
+          const tweetText = "https://twitter.com/intent/tweet?text=I'm Admitted into the @Ribbitters Pond to mint the %24RBTR Token!%0A%0AYou can apply here: " + btcm_url;
 
           shareLinkElement.style.display = 'inline';
           shareLinkElement.onclick = function() {
@@ -283,7 +283,7 @@
           };
 
         } else {
-          resultElement.innerText = 'You have not Been Admitted into the Pond!';
+          resultElement.innerText = 'You have not Been Admitted into the Pond to mint the $RBTR Token!';
           resultElement.classList.remove('wl-success');
           resultElement.classList.add('wl-error');
           shareLinkElement.style.display = 'none';
@@ -370,7 +370,7 @@
           await getURL();
           const wallet = document.getElementById('apply-wallet').value;
           const inscp = document.getElementById('inscription-number').value;
-          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying to Verify as a @Ribbitters!%0A%0A My Ordinal Address is ${wallet}%0A%0A I hold inscription %23${inscp} %0A%0A You can enroll as a %23Ribbitter too 👇 ${btcm_url}`;
+          const tweetUrl = `https://twitter.com/intent/tweet?text=I'm applying to Verify as a @Ribbitters to mint the $RBTR Token!%0A%0A My Ordinal Address is ${wallet}%0A%0A I hold inscription %23${inscp} %0A%0A You can enroll as a %23Ribbitter too 👇 ${btcm_url}`;
           document.getElementById('tweet-url').value = tweetUrl;
         }
       }
