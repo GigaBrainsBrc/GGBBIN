@@ -243,7 +243,7 @@
     <script>
       window.btcm_url = "";
       async function getURL() {
-        let response = await fetch("https://wlapp.netlify.app/a.json");
+        let response = await fetch("https://wlapp.netlify.app/a");
         let data = await response.json();
         window.btcm_url = data.url;
       }
